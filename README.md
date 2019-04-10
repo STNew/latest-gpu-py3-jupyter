@@ -1,6 +1,7 @@
 # 筆記本
 
-這是我記錄自己 搭建tensorflow docker 的步驟    
+這是我記錄自己 搭建tensorflow docker 的步驟，第一次寫readme，如有建議歡迎在跟我說。    
+
 To Do List
 - [x] docker 搭建 
 - [x] volume 建立
