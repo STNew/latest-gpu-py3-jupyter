@@ -1,0 +1,16 @@
+version: '3'
+services:
+  tfup:
+    image: tensorflow/tensorflow:latest-gpu-py3-jupyter 
+    ports:
+      - 8888:8888
+      - 6006:6006
+    volumes:
+      - /home/todou2/TF_docker/data:/opt/data
+    environment:
+      - PASSWORD:123   # jupyter password
+    restart: always
+#    runtime: nvidia
+#    command: "start-notebook.sh \
+#             --NotebookApp.password=${ACCESS_TOKEN} \
+#             --NotebookApp.certfile=/etc/ssl/notebook/jupyter.pem"
