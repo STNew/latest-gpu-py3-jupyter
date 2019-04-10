@@ -52,7 +52,7 @@ $ sudo docker run hello-world
 我自己是使用此方法(印象中)
 因為安裝CUDA時就會幫你安裝驅動
 (目前tnesorflow 已經支援CUDA Toolkit 10，但我還沒有實驗過)   
-1.下載網紙 [點選](https://developer.nvidia.com/cuda-91-download-archive?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=1604&target_type=deblocal)
+1.下載網址 [點選](https://developer.nvidia.com/cuda-91-download-archive?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=1604&target_type=deblocal)
 ```
 sudo dpkg -i cuda-repo-ubuntu1604-9-1-local_9.1.85-1_amd64.deb
 ```      
@@ -161,7 +161,7 @@ vim /etc/docker/daemon.json
 sudo service docker restart
 ```
 ### 2.安裝docker compose
-擷取自[[官方文件](https://docs.docker.com/compose/install/)
+擷取自[官方文件](https://docs.docker.com/compose/install/)
 
 ```
 sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
