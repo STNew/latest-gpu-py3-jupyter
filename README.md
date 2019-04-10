@@ -49,9 +49,9 @@ $ sudo docker run hello-world
 
 ## B.安裝驅動程式
 ### 1.透過CUDA Toolkit 安裝 
-我自己是使用此方法(印象中)
-因為安裝CUDA時就會幫你安裝驅動
-(目前tnesorflow 已經支援CUDA Toolkit 10，但我還沒有實驗過)   
+>我自己是使用此方法(印象中)
+>因為安裝CUDA時就會幫你安裝驅動
+>(目前tnesorflow 已經支援CUDA Toolkit 10，但我還沒有實驗過)   
 1.下載網址 [點選](https://developer.nvidia.com/cuda-91-download-archive?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=1604&target_type=deblocal)
 ```
 sudo dpkg -i cuda-repo-ubuntu1604-9-1-local_9.1.85-1_amd64.deb
@@ -93,14 +93,12 @@ sudo pkill -SIGHUP dockerd
 docker run --runtime=nvidia --rm nvidia/cuda:9.0-base nvidia-smi
 ```    
 
-## D.pull tensorflow docker
+## D.下載docker image (Pull tensorflow docker)
 ### 1.下載
 ```
 docker pull tensorflow/tensorflow:latest-gpu-py3-jupyter
 ```
 此過程需要下載一段時間
-
-測試是否可以使用
 
 ### 2.測試是否可以使用
 a.直接開啟
@@ -173,7 +171,7 @@ docker-compose --version
 ```
 
 ### 3.使用docker composed
-1.下載檔案
+1.下載檔案  
 2.更改volume位置
 ```
 vim docker-compose.yml
