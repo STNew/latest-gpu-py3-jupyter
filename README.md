@@ -15,41 +15,33 @@ $ sudo apt-get remove docker docker-engine docker.io containerd runc
 ### 2.Install Docker CE
 ```
 $ sudo apt-get update
-```
-```
+
 $ sudo apt-get install \
     apt-transport-https \
     ca-certificates \
     curl \
     gnupg-agent \
     software-properties-common
-```
-```
+
 $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-```
-```
+
 $ sudo apt-key fingerprint 0EBFCD88
-```
-```
+
 $ sudo add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
    stable"
-```
-```
+
 $ sudo apt-get update
-```
-```
+
 $ sudo apt-get install docker-ce docker-ce-cli containerd.io
-```
-```
+
 $ apt-cache madison docker-ce
-```  
-```
+
 $ sudo docker run hello-world
+** 測試自己的docker是否安裝成功 **
 ```
 
-** 測試自己的docker是否安裝成功 **
 
 ## B.安裝驅動程式
 ### 1.透過CUDA Toolkit 安裝 
@@ -97,6 +89,71 @@ sudo pkill -SIGHUP dockerd
 docker run --runtime=nvidia --rm nvidia/cuda:9.0-base nvidia-smi
 ```    
 
+## D.pull tensorflow docker
+### 1.下載
+```
+docker pull tensorflow/tensorflow:latest-gpu-py3-jupyter
+```
+此過程需要下載一段時間
+
+測試是否可以使用
+
+### 2.測試是否可以使用
+a.直接開啟
+```
+docker run --runtime=nvidia -it -p 8888:8888 tensorflow/tensorflow:latest-gpu-jupyter bash
+```
+用browser連  ```你的IP:8888```
+如果出現需要token的畫面 
+則要去logs尋找
+```
+docker ps -a 
+#此時會列出所有在跑的 container
+#複製正在跑的那個container 的ID
+docker logs  你的container_ID
+```
+即可以得到你的token
+
+
+b.進bash 在開啟
+```
+docker run --runtime=nvidia -it -p 8888:8888 tensorflow/tensorflow:latest-gpu-jupyter 
+jupyter notebook --ip 0.0.0.0 --no-browser --allow-root
+```
+用browser連  ```你的IP:8888```
+
+## E.延伸 使用docker compose
+### 1.設定 nvidia-docker 為預設runtime
+```
+vim /etc/docker/daemon.json
+```
+你看到的應該會是：
+```
+{
+    "runtimes": {
+        "nvidia": {
+            "path": "nvidia-container-runtime",
+            "runtimeArgs": []
+        }
+    }
+}
+```
+加入 default-runtime
+```
+{
+    "default-runtime":"nvidia",
+    "runtimes": {
+        "nvidia": {
+            "path": "nvidia-container-runtime",
+            "runtimeArgs": []
+        }
+    }
+}
+```
+重啟docker
+```
+sudo service docker restart
+```
 
 
 
