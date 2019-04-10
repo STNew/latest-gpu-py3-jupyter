@@ -6,7 +6,7 @@ services:
       - 8888:8888
       - 6006:6006
     volumes:
-      - /home/todou2/TF_docker/data:/opt/data
+      - /home/YOUR_USER_ID/data:/opt/data
     environment:
       - PASSWORD:123   # jupyter password
     restart: always
