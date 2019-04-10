@@ -3,7 +3,7 @@
 這是我記錄自己 搭建tensorflow docker 的步驟，第一次寫readme，如有建議歡迎在跟我說。    
 環境: ubuntu 16.04、 GPU RTX2080  安裝: Tensorflow 1.13
 
-To Do List
+*To Do List*
 - [x] docker 搭建 
 - [x] volume 建立
 - [ ] jupyer notebook 免輸入密碼
