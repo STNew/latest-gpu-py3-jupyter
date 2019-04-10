@@ -5,5 +5,5 @@
 
 
 
-[X] 111
-- [x] 111
+- [x] docker 搭建 
+- [ ] jupyer notebook 免輸入密碼
