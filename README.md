@@ -1,6 +1,10 @@
 # 筆記本
 
 這是我記錄自己 搭建tensorflow docker 的步驟
+To Do List
+- [x] docker 搭建 
+- [x] volume 建立
+- [ ] jupyer notebook 免輸入密碼
 
 ## A.Docker 安裝 
 >[取自docker官方文件](https://docs.docker.com/install/)
@@ -124,11 +128,13 @@ jupyter notebook --ip 0.0.0.0 --no-browser --allow-root
 
 ## E.延伸 使用docker compose
 ### 1.設定 nvidia-docker 為預設runtime
+1.進入設定檔
 ```
 vim /etc/docker/daemon.json
 ```
-你看到的應該會是：
+2.更改內容
 ```
+#你看到的應該會是：
 {
     "runtimes": {
         "nvidia": {
@@ -137,9 +143,9 @@ vim /etc/docker/daemon.json
         }
     }
 }
-```
-加入 default-runtime
-```
+
+#此時加入 default-runtime
+#更改成這樣：
 {
     "default-runtime":"nvidia",
     "runtimes": {
@@ -150,17 +156,44 @@ vim /etc/docker/daemon.json
     }
 }
 ```
-重啟docker
+3.重啟docker
 ```
 sudo service docker restart
 ```
+### 2.安裝docker compose
+擷取自[[官方文件](https://docs.docker.com/compose/install/)
 
+```
+sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
+sudo chmod +x /usr/local/bin/docker-compose
 
+#檢查安裝是否成功
+docker-compose --version
+```
 
+### 3.使用docker composed
+1.下載檔案
+2.更改volume位置
+```
+vim docker-compose.yml
+```
+找到
+```
+    volumes:
+      - /home/YOUR_USER_ID/data:/opt/data
 
+```
+把YOUR_USER_ID改成你的user ID
+>之後就可以在你的ubuntu user_home的data中，放tensorflow docker要用的資料在裡面
 
-
-
-- [x] docker 搭建 
-- [ ] jupyer notebook 免輸入密碼
+3.啟動
+>在與 docker-compose.yml 同資料夾下
+```
+docker-compose up 
+```
+4.關閉docker
+```
+docker-compose down 
+```
+****
