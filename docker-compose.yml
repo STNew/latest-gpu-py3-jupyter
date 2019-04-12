@@ -6,7 +6,7 @@ services:
       - 8888:8888
       - 6006:6006
     volumes:
-      - /home/YOUR_USER_ID/data:/opt/data
+      - /home/YOUR_USER_ID/home:/opt/home
     environment:
       - PASSWORD:123   # jupyter password
     restart: always
